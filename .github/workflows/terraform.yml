@@ -43,17 +43,17 @@ jobs:
 
              
             - name: Terraform init Stage
-              uses: terraform init
+              run: terraform init
             
             - name: Terraform plan Stage
-              uses: terraform init
+              run: terraform init
             
             - name: Terraform apply Stage
               if: github.event_name == 'push' || github.event.inputs.action == 'apply'
-              uses: terraform apply -auto-approve
+              run: terraform apply -auto-approve
               
             - name: Terraform destroy Stage
               if: github.event_name == 'workflow_dispatch' && github.event.inputs.action == 'destroy'
-              uses: terraform destroy -auto-approve
+              run: terraform destroy -auto-approve
               
             
